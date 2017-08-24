@@ -2,32 +2,36 @@ package generator;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class SaveAndReadFiles {
 	
-	public void saveOutput(String[] outputSet) {
-		String fileName = "output.txt";
-
-        try {
-            FileWriter fw = new FileWriter(fileName, true);
-            BufferedWriter output = new BufferedWriter(fw);
-            int size = outputSet.length;
-            
-            for (int i = 0; i < size; i++) {
-            	output.append(outputSet[i]+"");
-            	output.newLine();
-            }
-            
-        	output.newLine();
+	public void saveOutput(String algoritmo, String inputType, int length, double d) {
+		FileWriter fw = null;
+		try {
+            fw = new FileWriter("output.csv", true);
+    		BufferedWriter output = new BufferedWriter(fw);
+    		
+            output.append(algoritmo);
+            output.append(',');
+            output.append(inputType);
+            output.append(',');
+            output.append(""+length);
+            output.append(',');
+            output.append(""+d);
+            output.append('\n');
             output.flush();  
-            output.close();  
-        } catch(Exception e) {
-        	System.out.println("erro"); 
-            System.out.println(e.getMessage());                
-        }
+            output.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     
 	}
 	
@@ -82,4 +86,5 @@ public class SaveAndReadFiles {
 		return auxSeries;
 	            
 	}
+
 }

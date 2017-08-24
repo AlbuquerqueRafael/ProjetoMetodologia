@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+C:\Users\Gabriel\Documents\GitHub\ProjetoMetodologia\ProjetoMetodologia\.metadata\.plugins\org.eclipse.jdt.core

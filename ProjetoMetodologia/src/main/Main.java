@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 				
-		GenerateRandomDataSet randomDataSet = new GenerateRandomDataSet(10000);
+		GenerateRandomDataSet randomDataSet = new GenerateRandomDataSet(30000);
 		
 		String[] outputSet = {"Algoritmo utilizado", "Tipo do dataset", "Tamanho do dataset", "Dataset", "Tempo de resposta"};
 		String algoritmo = "quick";
@@ -80,14 +80,8 @@ public class Main {
 		System.out.println();
 		
 		SaveAndReadFiles saver = new SaveAndReadFiles();
-		
-		outputSet[0] += ": " + algoritmo + "sort";
-		outputSet[1] += ": " + inputType;
-		outputSet[2] += ": " + input.length;
-		outputSet[3] += ": " + formattedOutput;
-		outputSet[4] += ": " + (tempoFinal - tempoInicial) / 1000d;
 
-		saver.saveOutput(outputSet);
+		saver.saveOutput(algoritmo + "sort", inputType, input.length, (tempoFinal - tempoInicial) / 1000d);
 		
 	}
 
