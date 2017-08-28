@@ -11,10 +11,10 @@ import java.io.PrintWriter;
 
 public class SaveAndReadFiles {
 	
-	public void saveOutput(String algoritmo, String inputType, int length, double d) {
+	public void saveOutput(File arquivo, String algoritmo, String inputType, int length, double d) {
 		FileWriter fw = null;
 		try {
-            fw = new FileWriter("output.csv", true);
+            fw = new FileWriter(arquivo, true);
     		BufferedWriter output = new BufferedWriter(fw);
     		
             output.append(algoritmo);

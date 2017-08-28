@@ -3,6 +3,8 @@ package generator;
 import java.util.Arrays;
 import java.util.Random;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+
 public class GenerateRandomDataSet {
 	private double[] series;
 	private int length;
@@ -35,6 +37,58 @@ public class GenerateRandomDataSet {
 		
 		return series;
 	}
+	
+	
+	public double[] generateOrdered () {
+		series = new double[length];
+		rand = new Random();
+		double result;
+
+		for(int i = 0; i < length; i++) {
+			result = rand.nextInt(100) + 1;
+			series[i] = result;
+		}
+		
+		Arrays.sort(series);
+		int init = rand.nextInt((int) Math.floor(length - 0.11 * length));
+		
+		int end = (10 * length + 100 * init) / 100;
+		
+		for(int i = init; i < end; i++) {
+			result = rand.nextInt(100) + 1;
+			series[i] = result;
+		}
+
+		Arrays.sort(series);
+		
+		return series;
+	}
+	
+	
+	
+	public double[] generateNotOrdered () {
+		series = new double[length];
+		rand = new Random();
+		double result;
+
+		for(int i = 0; i < length; i++) {
+			result = rand.nextInt(100) + 1;
+			series[i] = result;
+		}
+		
+		Arrays.sort(series);
+		int init = rand.nextInt((int) Math.floor(length - 0.99 * length));
+		
+		int end = (10 * length + 100 * init) / 100;
+		
+		for(int i = init; i < end; i++) {
+			result = rand.nextInt(100) + 1;
+			series[i] = result;
+		}
+
+		return series;
+	}
+	
 	
 	public double[] generateAlmostSorted () {
 		series = new double[length];
